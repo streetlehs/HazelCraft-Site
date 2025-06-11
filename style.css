@@ -43,6 +43,12 @@ header h1 {
   animation: slideDown 1s cubic-bezier(.68,-0.55,.27,1.55);
 }
 
+header p {
+  font-size: 1.2rem;
+  margin: 0.5rem;
+  animation: slideDown 1.2s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
 @keyframes slideDown {
   from { transform: translateY(-60px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
@@ -298,9 +304,10 @@ p, li {
     font-size: 1rem !important;
   }
   .container {
-    padding: 0.5rem 0.2rem;
+    padding: 1rem 1rem;
     border-radius: 0.7rem;
-  }
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;}
   .faq-grid {
     grid-template-columns: 1fr 1fr;
     gap: 0.7rem;
@@ -311,6 +318,7 @@ p, li {
     max-width: 100%;
     padding: 1rem 0.7rem 0.7rem 0.7rem;
     font-size: 1rem;
+    margin-top: 1rem;
   }
   .join-grid {
     flex-direction: column;
