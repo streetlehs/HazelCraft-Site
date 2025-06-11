@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>HazelCraft - Server Rules</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+      // Fade-in on scroll
+      document.addEventListener('DOMContentLoaded', function() {
+        const fadeEls = document.querySelectorAll('.fade-in');
+        const onScroll = () => {
+          fadeEls.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 60) {
+              el.classList.add('visible');
+            } else {
+              el.classList.remove('visible');
+            }
+          });
+        };
+        window.addEventListener('scroll', onScroll);
+        onScroll();
+      });
+    </script>
+  </head>
+  <body>
+    <a href="index.html" class="home-btn" style="position:fixed;top:1.2rem;left:1.2rem;z-index:200;display:flex;align-items:center;text-decoration:none;background:linear-gradient(90deg,#2193b0 0%,#6dd5ed 100%);color:#fff;padding:0.5em 1.2em;border-radius:2em;font-weight:700;box-shadow:0 2px 8px rgba(33,147,176,0.15);font-size:1.1rem;transition:background 0.2s,transform 0.2s;">
+      <span style="font-size:1.3em;margin-right:0.5em;">🏠</span> Home
+    </a>
+    <header>
+      <h1><span class="icon">🌲</span>HazelCraft Server Rules</h1>
+      <p class="fade-in">Please read and follow these rules to ensure a safe and enjoyable experience for everyone.</p>
+    </header>
+    <main class="container fade-in">
+      <section class="rules-section">
+        <h2>Server Rules</h2>
+        <div class="rules-grid">
+          <ul>
+            <li>No hacking, including hacked clients, X-Ray, or any unfair advantage.</li>
+            <li>No spamming or advertising. Keep chat clean and free of promotions.</li>
+            <li>Do not AFK for extended periods. You may be kicked automatically if inactive.</li>
+            <li>No combat logging. Disconnecting during PvP is not allowed.</li>
+          </ul>
+          <ul>
+            <li>No lag machines. Do not build anything that intentionally lags the server.</li>
+            <li>Chat is unfiltered. Say what you want, but don’t cry if someone says it back.</li>
+            <li>No duping or exploiting bugs, glitches, or duplication methods.</li>
+          </ul>
+          <ul>
+            <li>Do not impersonate staff or other players. Keep identities clear.</li>
+            <li>Alt accounts: You may use one Bedrock and one Java account.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+    <footer style="text-align:center; margin:2rem 10 1rem 0; color:#aaa;">
+      &copy; 2025 HazelCraft. Not affiliated with Mojang, Microsoft or Hazelwick.
+    </footer>
+  </body>
+</html>

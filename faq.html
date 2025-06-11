@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>HazelCraft - Frequently Asked Questions</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+      // Fade-in on scroll
+      document.addEventListener('DOMContentLoaded', function() {
+        const fadeEls = document.querySelectorAll('.fade-in');
+        const onScroll = () => {
+          fadeEls.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 60) {
+              el.classList.add('visible');
+            } else {
+              el.classList.remove('visible');
+            }
+          });
+        };
+        window.addEventListener('scroll', onScroll);
+        onScroll();
+      });
+    </script>
+  </head>
+  <body>
+    <a href="index.html" class="home-btn" style="position:fixed;top:1.2rem;left:1.2rem;z-index:200;display:flex;align-items:center;text-decoration:none;background:linear-gradient(90deg,#2193b0 0%,#6dd5ed 100%);color:#fff;padding:0.5em 1.2em;border-radius:2em;font-weight:700;box-shadow:0 2px 8px rgba(33,147,176,0.15);font-size:1.1rem;transition:background 0.2s,transform 0.2s;">
+      <span style="font-size:1.3em;margin-right:0.5em;">🏠</span> Home
+    </a>
+    <header>
+      <h1><span class="icon">🌲</span>HazelCraft FAQ</h1>
+      <p class="fade-in">Find answers to common questions about HazelCraft.</p>
+    </header>
+    <main class="container fade-in">
+      <section class="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-grid">
+          <div class="faq-card">
+            <h3>Who can join HazelCraft?</h3>
+            <p>HazelCraft is exclusively for Hazelwick students. Please do not invite outsiders without permission.</p>
+          </div>
+          <div class="faq-card">
+            <h3>What platforms are supported?</h3>
+            <p><strong>Java Edition (cracked & paid):</strong> Windows, macOS, Linux<br><strong>Bedrock Edition:</strong> Windows, Linux, iOS, Android, Xbox, PlayStation, Nintendo Switch, Chromebook</p>
+          </div>
+          <div class="faq-card">
+            <h3>How can I donate?</h3>
+            <p>You can donate in person at school, or send cryptocurrency to:<br><span style="display:inline-block; background:#1e3c72; color:#6dd5ed; padding:0.2em 0.6em; border-radius:0.3em; font-size:0.98em; word-break:break-all;">bc1qsa7y0u67wust7pzus3dyaq93vlty4hgdgmgt3s</span></p>
+          </div>
+          <div class="faq-card">
+            <h3>Is the server safe?</h3>
+            <p>Yes. Only students and approved staff can join. The server is actively moderated and follows school guidelines to ensure a safe environment.</p>
+          </div>
+          <div class="faq-card">
+            <h3>What gamemode is available?</h3>
+            <p>The server operates in Survival Mode, providing a classic Minecraft experience for all players.</p>
+          </div>
+          <div class="faq-card">
+            <h3>Is HazelCraft endorsed by Hazelwick?</h3>
+            <p>No. HazelCraft is an independent community server created by and for students. It is not officially affiliated with Hazelwick School or its staff.</p>
+          </div>
+          <div class="faq-card">
+            <h3>Are Java and Bedrock players able to play together?</h3>
+            <p>Yes, HazelCraft supports cross-play between Java and Bedrock players. Please note that Bedrock players may experience slightly higher latency.</p>
+          </div>
+          <div class="faq-card">
+            <h3>Is the server modded?</h3>
+            <p>The server features world generation mods (Tectonic, Terralith) and quality-of-life mods (Fast Leaf Decay, VeinMiner, Tree Harvester), but remains largely vanilla.</p>
+          </div>
+          <div class="faq-card">
+            <h3>Will the world ever reset?</h3>
+            <p>The world may be reset with major Minecraft updates, marking a new season for the server.</p>
+          </div>
+          <div class="faq-card">
+            <h3>How do I report a player or problem?</h3>
+            <p>Please contact Leon directly on the Discord Server to report any issues or concerns.</p>
+          </div>
+          <div class="faq-card">
+            <h3>What is the minimum Minecraft version required?</h3>
+            <p>Currently, only version 1.21.5 is supported to ensure the best compatibility for all players.</p>
+          </div>
+        </div>
+        <p class="faq-link">For server rules, see the <a href="rules.html" class="btn btn-small">Rules Page</a></p>
+      </section>
+    </main>
+    <footer style="text-align:center; margin:2rem 10 1rem 0; color:#aaa;">
+      &copy; 2025 HazelCraft. Not affiliated with Mojang, Microsoft or Hazelwick.
+    </footer>
+  </body>
+</html>

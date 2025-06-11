@@ -1,0 +1,285 @@
+/* HazelCraft Modern Website Styles */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', Arial, sans-serif;
+  background: linear-gradient(135deg, #232526 0%, #414345 100%);
+  color: #f5f5f5;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: -1;
+  background: url('background.png') center center/cover no-repeat;
+  filter: blur(12px) brightness(0.7);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+header {
+  background: rgba(34, 193, 195, 0.9);
+  background: linear-gradient(90deg, #43cea2 0%, #185a9d 100%);
+  padding: 2rem 0 1rem 0;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  animation: slideDown 1s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-60px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(30, 30, 40, 0.95);
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  animation: fadeIn 1.2s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+section {
+  margin-bottom: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #43cea2;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+p, li {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.faq {
+  margin-top: 2rem;
+}
+
+.faq-item {
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #43cea2;
+  padding-left: 1rem;
+  background: rgba(255,255,255,0.02);
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(67,206,162,0.05);
+  transition: background 0.3s;
+}
+.faq-item:hover {
+  background: rgba(67,206,162,0.08);
+}
+.faq-question {
+  font-weight: 700;
+  color: #43cea2;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s cubic-bezier(.68,-0.55,.27,1.55), opacity 0.5s;
+}
+.faq-item.active .faq-answer {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 0.5rem;
+}
+
+/* New styles for FAQ grid and cards */
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.faq-card {
+  background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 24px rgba(33,147,176,0.18);
+  padding: 1.5rem 1.5rem 1.2rem 1.5rem;
+  color: #fff;
+  border-left: 6px solid #185a9d;
+  min-width: 220px;
+  max-width: 350px;
+  animation: fadeInUp 0.9s cubic-bezier(.68,-0.55,.27,1.55);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.faq-card:hover {
+  box-shadow: 0 8px 32px rgba(33,147,176,0.28);
+  transform: translateY(-8px) scale(1.03);
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.faq-link {
+  text-align: right;
+  margin-top: 1rem;
+}
+.btn-small {
+  font-size: 0.95rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 1.2rem;
+}
+.btn-large {
+  font-size: 1.3rem;
+  padding: 1.1rem 2.5rem;
+  border-radius: 2.5rem;
+  margin: 2rem auto 0 auto;
+  display: block;
+  background: linear-gradient(90deg, #43cea2 0%, #2193b0 100%);
+}
+
+/* Join page styles */
+.join-grid {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.join-card {
+  background: linear-gradient(135deg, #185a9d 0%, #43cea2 100%);
+  color: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 24px rgba(33,147,176,0.18);
+  padding: 1.5rem 2rem 1.2rem 2rem;
+  min-width: 260px;
+  max-width: 350px;
+  animation: fadeInUp 0.9s cubic-bezier(.68,-0.55,.27,1.55);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.join-card:hover {
+  box-shadow: 0 8px 32px rgba(33,147,176,0.28);
+  transform: translateY(-8px) scale(1.03);
+}
+.join-card ul {
+  margin: 0.5rem 0 0 1.2rem;
+  padding: 0;
+  color: #fff;
+}
+.join-card code {
+  background: #1e3c72;
+  color: #6dd5ed;
+  padding: 0.1em 0.4em;
+  border-radius: 0.3em;
+  font-size: 0.98em;
+}
+
+/* Fade-in on scroll */
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(.68,-0.55,.27,1.55), transform 0.8s cubic-bezier(.68,-0.55,.27,1.55);
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Button styles */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background: linear-gradient(90deg, #43cea2 0%, #185a9d 100%);
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(67,206,162,0.15);
+  margin-top: 1.5rem;
+  transition: background 0.3s, transform 0.2s;
+}
+.btn:hover {
+  background: linear-gradient(90deg, #185a9d 0%, #43cea2 100%);
+  transform: scale(1.05);
+}
+
+/* Animations for icons */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0); }
+}
+.icon {
+  display: inline-block;
+  margin-right: 0.5rem;
+  animation: float 2.5s ease-in-out infinite;
+  color: #43cea2;
+  font-size: 2rem;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background: #232526;
+}
+::-webkit-scrollbar-thumb {
+  background: #43cea2;
+  border-radius: 5px;
+}
+
+/* News and Stats sidebars */
+.news-sidebar {
+  position: fixed;
+  top: 20%;
+  left: 0;
+  width: 270px;
+  background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
+  color: #fff;
+  border-radius: 0 1.2rem 1.2rem 0;
+  box-shadow: 4px 0 24px rgba(33,147,176,0.18);
+  padding: 1.5rem 1.2rem;
+  z-index: 100;
+  max-height: 70vh;
+  overflow-y: auto;
+  animation: fadeIn 1.2s;
+}
+.stats-sidebar {
+  position: fixed;
+  top: 20%;
+  right: 0;
+  width: 270px;
+  background: linear-gradient(135deg, #185a9d 0%, #43cea2 100%);
+  color: #fff;
+  border-radius: 1.2rem 0 0 1.2rem;
+  box-shadow: -4px 0 24px rgba(33,147,176,0.18);
+  padding: 1.5rem 1.2rem;
+  z-index: 100;
+  max-height: 70vh;
+  overflow-y: auto;
+  animation: fadeIn 1.2s;
+}
+@media (max-width: 1100px) {
+  .news-sidebar, .stats-sidebar { display: none; }
+}

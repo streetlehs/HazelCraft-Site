@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Join HazelCraft</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <a href="index.html" class="home-btn" style="position:fixed;top:1.2rem;left:1.2rem;z-index:200;display:flex;align-items:center;text-decoration:none;background:linear-gradient(90deg,#2193b0 0%,#6dd5ed 100%);color:#fff;padding:0.5em 1.2em;border-radius:2em;font-weight:700;box-shadow:0 2px 8px rgba(33,147,176,0.15);font-size:1.1rem;transition:background 0.2s,transform 0.2s;">
+      <span style="font-size:1.3em;margin-right:0.5em;">🏠</span> Home
+    </a>
+    <header>
+      <h1><span class="icon">🌲</span>Join HazelCraft</h1>
+      <p class="fade-in">How to join the HazelCraft Minecraft server</p>
+    </header>
+    <main class="container">
+      <section class="fade-in">
+        <h2>Server Info</h2>
+        <div class="join-grid">
+          <div class="join-card">
+            <h3>Java Edition</h3>
+            <ul>
+              <li><strong>Server Address:</strong> <code>play.hazelcraft.tech</code></li>
+              <li><strong>Version:</strong> 1.21.5</li>
+              <li>Works with both cracked and paid accounts</li>
+            </ul>
+          </div>
+          <div class="join-card">
+            <h3>Bedrock Edition</h3>
+            <ul>
+              <li><strong>Server Address:</strong> <code>play.hazelcraft.tech</code></li>
+              <li><strong>Port:</strong> Default (19132)</li>
+              <li><strong>Version:</strong> 1.21.5</li>
+              <li>Supported on Windows, Linux, iOS, Android, Xbox, PlayStation, Switch, Chromebook</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="fade-in">
+        <h2>Need Help?</h2>
+        <p>Check the <a href="faq.html">FAQ</a> or join our <a href="https://discord.gg/rZWBSgbkmY" target="_blank">Discord</a> for support!</p>
+      </section>
+    </main>
+    <footer style="text-align:center; margin:2rem 10 1rem 0; color:#aaa;">
+      &copy; 2025 HazelCraft. Not affiliated with Mojang, Microsoft or Hazelwick.
+    </footer>
+    <script>
+      // Fade-in on scroll (same as index.html)
+      document.addEventListener('DOMContentLoaded', function() {
+        const fadeEls = document.querySelectorAll('.fade-in');
+        const onScroll = () => {
+          fadeEls.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 60) {
+              el.classList.add('visible');
+            } else {
+              el.classList.remove('visible');
+            }
+          });
+        };
+        window.addEventListener('scroll', onScroll);
+        onScroll();
+      });
+    </script>
+  </body>
+</html>

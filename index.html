@@ -2,10 +2,125 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Test Website</title>
+    <title>HazelCraft - Student Minecraft Server</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+      // Fade-in on scroll
+      document.addEventListener('DOMContentLoaded', function() {
+        const fadeEls = document.querySelectorAll('.fade-in');
+        const onScroll = () => {
+          fadeEls.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 60) {
+              el.classList.add('visible');
+            } else {
+              el.classList.remove('visible');
+            }
+          });
+        };
+        window.addEventListener('scroll', onScroll);
+        onScroll();
+      });
+    </script>
+    <script>
+      // Live server stats fetch with progress bars and temperature color
+      function getTempColor(temp) {
+        if (temp === null || temp === undefined) return '#aaa';
+        if (temp < 40) return '#43cea2'; // cool
+        if (temp < 60) return '#ffd700'; // warm
+        if (temp < 75) return '#ff9800'; // hot
+        return '#e53935'; // very hot
+      }
+      function renderBar(used, total, color) {
+        const percent = Math.min(100, (used / total) * 100);
+        return `<div style="background:#222; border-radius:1em; width:100%; height:1.1em; margin:0.3em 0 0.7em 0; overflow:hidden;">
+          <div style="background:${color}; width:${percent}%; height:100%; border-radius:1em;"></div>
+        </div>`;
+      }
+      function fetchStats() {
+        fetch('http://80.42.76.179:5000/stats')
+          .then(res => res.json())
+          .then(data => {
+            const statsDiv = document.getElementById('server-stats');
+            const ramBar = renderBar(data.ram.used, data.ram.total, '#43cea2');
+            const diskBar = renderBar(data.disk.used, data.disk.total, '#2193b0');
+            const tempColor = getTempColor(data.cpu_temp);
+            statsDiv.innerHTML = `
+              <strong>RAM:</strong> ${(data.ram.used/1e9).toFixed(2)}GB / ${(data.ram.total/1e9).toFixed(2)}GB
+              ${ramBar}
+              <strong>Disk:</strong> ${(data.disk.used/1e9).toFixed(2)}GB / ${(data.disk.total/1e9).toFixed(2)}GB
+              ${diskBar}
+              <strong>CPU Temp:</strong> <span style="color:${tempColor}; font-weight:bold;">${data.cpu_temp ? data.cpu_temp + '°C' : 'N/A'}</span>
+            `;
+          })
+          .catch(() => {
+            const statsDiv = document.getElementById('server-stats');
+            statsDiv.innerHTML = `<div id="server-down-message" style="border:2px solid #e53935; color:#f09593; border-radius:0.5em; padding:0.5em; margin-top:1em; background:#2a0000;">
+              Server is currently down or unreachable.
+            </div>`;
+          });
+      }
+      setInterval(fetchStats, 1000);
+      document.addEventListener('DOMContentLoaded', fetchStats);
+    </script>
   </head>
   <body>
-    <h1>Welcome to the Test Website</h1>
-    <p>This is a basic page to test functionality.</p>
+    <aside class="news-sidebar fade-in">
+      <h3>Community Updates</h3>
+      <ul>
+        <li><strong>11 June:</strong> Website launch!</li>
+      </ul>
+    </aside>
+    <aside class="stats-sidebar fade-in">
+      <h3>Server Stats</h3>
+      <div id="server-stats">
+        <div id="server-down-message" style="border:2px solid #e53935; color:#f09593; border-radius:0.5em; padding:0.5em; margin-top:1em; background:#2a0000;">
+          Server is currently down or unreachable.
+        </div>
+      </div>
+    </aside>
+    <header>
+      <h1><span class="icon">🌲</span>HazelCraft</h1>
+      <p class="fade-in">A student-hosted Minecraft server for our school community!</p>
+    </header>
+    <main class="container">
+      <section class="fade-in">
+        <h2>Welcome</h2>
+        <p>Join HazelCraft, the official Minecraft server for students! Build, explore, and collaborate in a safe, friendly environment. Whether you’re a redstone engineer or a creative builder, there’s a place for you here.</p>
+        <a href="join.html" class="btn">Join the Server</a>
+      </section>
+      <section class="fade-in">
+        <h2>Features</h2>
+        <ul>
+          <li>🛡️ Whitelisted for student safety</li>
+          <li>🎮 Expansive Survival world</li>
+          <li>🏆 Community events & competitions</li>
+          <li>💬 In-game chat</li>
+          <li>🌐 24/7 uptime*</li>
+        </ul>
+      <p><em>*server may go down periodically for updates & maintenance</em></p>
+      </section>
+      <section class="fade-in">
+        <h2>FAQ</h2>
+        <div class="faq-grid">
+          <div class="faq-card">
+            <h3>Who can join HazelCraft?</h3>
+            <p>HazelCraft is exclusively for Hazelwick students. Please do not invite outsiders without permission.</p>
+          </div>
+          <div class="faq-card">
+            <h3>What platforms are supported?</h3>
+            <p><strong>Java Edition (cracked & paid):</strong> Windows, macOS, Linux<br><strong>Bedrock Edition:</strong> Windows, Linux, iOS, Android, Xbox, PlayStation, Nintendo Switch, Chromebook</p>
+          </div>
+          <div class="faq-card">
+            <h3>How can I donate?</h3>
+            <p>You can donate in person at school, or send cryptocurrency to:<br><span style="display:inline-block; background:#1e3c72; color:#6dd5ed; padding:0.2em 0.6em; border-radius:0.3em; font-size:0.98em; word-break:break-all;">bc1qsa7y0u67wust7pzus3dyaq93vlty4hgdgmgt3s</span></p>
+          </div>
+        </div>
+        <p class="faq-link">For more answers, see the <a href="faq.html" class="btn btn-small">Full FAQ</a></p>
+      </section>
+    </main>
+    <footer style="text-align:center; margin:2rem 10 1rem 0; color:#aaa;">
+      &copy; 2025 HazelCraft. Not affiliated with Mojang, Microsoft or Hazelwick.
+    </footer>
   </body>
 </html>
