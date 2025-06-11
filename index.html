@@ -38,7 +38,7 @@
         </div>`;
       }
       function fetchStats() {
-        fetch('http://80.42.76.179:5000/stats')
+        fetch('https://80.42.76.179:5000/stats')
           .then(res => res.json())
           .then(data => {
             const statsDiv = document.getElementById('server-stats');
