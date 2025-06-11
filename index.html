@@ -65,6 +65,28 @@
     </script>
   </head>
   <body>
+    <header>
+      <h1><span class="icon">🌲</span>HazelCraft</h1>
+      <p class="fade-in">A student-hosted Minecraft server for our school community!</p>
+    </header>
+    <!-- Mobile sidebars (hidden on desktop, shown on mobile) -->
+    <div class="mobile-sidebars" style="display:none; padding: 0 1.2em;">
+      <section class="mobile-sidebar-section news">
+        <h3>Community Updates</h3>
+        <ul>
+          <li><strong>11 June:</strong> Website launch!</li>
+        </ul>
+      </section>
+      <section class="mobile-sidebar-section stats">
+        <h3>Server Stats</h3>
+        <div id="mobile-server-stats">
+          <div id="mobile-server-down-message" style="border:2px solid #e53935; color:#f09593; border-radius:0.5em; padding:0.5em; margin-top:1em; background:#2a0000;">
+            Server is currently down or unreachable.
+          </div>
+        </div>
+      </section>
+    </div>
+    <!-- Desktop sidebars (shown on desktop, hidden on mobile) -->
     <aside class="news-sidebar fade-in">
       <h3>Community Updates</h3>
       <ul>
@@ -79,10 +101,23 @@
         </div>
       </div>
     </aside>
-    <header>
-      <h1><span class="icon">🌲</span>HazelCraft</h1>
-      <p class="fade-in">A student-hosted Minecraft server for our school community!</p>
-    </header>
+    <script>
+      // Show/hide mobile sidebars based on screen size
+      function handleMobileSidebars() {
+        const mobile = window.matchMedia('(max-width: 700px)').matches;
+        document.querySelector('.mobile-sidebars').style.display = mobile ? 'block' : 'none';
+      }
+      window.addEventListener('resize', handleMobileSidebars);
+      document.addEventListener('DOMContentLoaded', handleMobileSidebars);
+      // Sync server stats to mobile
+      function syncMobileStats() {
+        if (window.matchMedia('(max-width: 700px)').matches) {
+          document.getElementById('mobile-server-stats').innerHTML = document.getElementById('server-stats').innerHTML;
+        }
+      }
+      setInterval(syncMobileStats, 1000);
+      document.addEventListener('DOMContentLoaded', syncMobileStats);
+    </script>
     <main class="container">
       <section class="fade-in">
         <h2>Welcome</h2>
