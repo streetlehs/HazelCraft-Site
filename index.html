@@ -154,8 +154,50 @@
         </div>
         <p class="faq-link">For more answers, see the <a href="faq.html" class="btn btn-small">Full FAQ</a></p>
       </section>
+      <!-- Discord Section (API-based) -->
+      <section class="fade-in" style="margin-top:2.5rem;">
+        <h2>Join Our Discord</h2>
+        <div class="discord-widget-container" id="discord-widget-api">
+          <div class="discord-loading" style="text-align:center; color:#aaa; padding:2em 0;">Loading Discord members...</div>
+        </div>
+        <div style="text-align:center; margin-top:1.2em;">
+          <a href="https://discord.com/invite/wjgQ7w84Gq" class="btn btn-small" target="_blank" rel="noopener">Join HazelCraft Discord</a>
+        </div>
+        <script>
+        async function renderDiscordWidget() {
+          const container = document.getElementById('discord-widget-api');
+          try {
+            const res = await fetch('https://discord.com/api/guilds/1345167184590147761/widget.json');
+            const data = await res.json();
+            let html = `<div style='background:rgba(30,30,40,0.95); border-radius:1.2rem; box-shadow:0 4px 24px rgba(33,147,176,0.18); padding:1.5em 1em; max-width:500px; margin:0 auto;'>`;
+            html += `<div style='display:flex;align-items:center;gap:0.7em;margin-bottom:1em;'>`;
+            html += `<img src='https://cdn.discordapp.com/attachments/1349485140790874193/1382795354293928149/HazelCraftIcon.png?ex=684c7407&is=684b2287&hm=9fc885fcaa80820b25b7638a9d2cf8ce85d7e25d83cae1985e805c4c81fa3aa3&' alt='HazelCraft' style='width:48px;height:48px;border-radius:1em;'>`;
+            html += `<div><strong style='font-size:1.2em;color:#43cea2;'>${data.name}</strong><br><span style='color:#aaa;font-size:0.98em;'>${data.presence_count} online</span></div>`;
+            html += `</div>`;
+            html += `<div style='display:flex;flex-wrap:wrap;gap:0.7em 1.2em;justify-content:center;'>`;
+            for (const member of data.members) {
+              html += `<div style='display:flex;flex-direction:column;align-items:center;gap:0.2em;background:rgba(255,255,255,0.03);border-radius:0.7em;padding:0.4em 0.8em;min-width:120px;'>`;
+              html += `<div style='display:flex;align-items:center;gap:0.5em;'>`;
+              html += `<img src='${member.avatar_url}' alt='${member.username}' style='width:32px;height:32px;border-radius:50%;background:#222;'>`;
+              html += `<span style='color:#fff;font-weight:600;'>${member.username}</span>`;
+              html += `<span style='font-size:0.9em;color:${member.status==="online"?"#43cea2":member.status==="idle"?"#ffd700":"#e53935"};'>●</span>`;
+              html += `</div>`;
+              if (member.game) {
+                html += `<div style='color:#aaa;font-size:0.92em;margin-top:0.1em;text-align:center;'>Playing <span style='color:#43cea2;'>${member.game.name}</span></div>`;
+              }
+              html += `</div>`;
+            }
+            html += `</div></div>`;
+            container.innerHTML = html;
+          } catch (e) {
+            container.innerHTML = `<div style='color:#e53935; text-align:center; padding:2em 0;'>Unable to load Discord widget.</div>`;
+          }
+        }
+        renderDiscordWidget();
+        </script>
+      </section>
     </main>
-    <footer style="text-align:center; margin:2rem 10 1rem 0; color:#aaa;">
+    <footer style="text-align:center; margin:2rem 0 1rem 0; color:#aaa;">
       &copy; 2025 HazelCraft. Not affiliated with Mojang, Microsoft or Hazelwick.
     </footer>
   </body>

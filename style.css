@@ -365,3 +365,35 @@ p, li {
     background: linear-gradient(135deg, #185a9d 0%, #43cea2 100%);
   }
 }
+
+.discord-widget-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0 2.5rem 0;
+}
+.discord-widget-container iframe {
+  width: 100%;
+  max-width: 500px;
+  min-width: 260px;
+  height: 400px;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 24px rgba(33,147,176,0.18);
+  background: rgba(30,30,40,0.95);
+  border: none;
+  display: block;
+}
+@media (max-width: 700px) {
+  .discord-widget-container iframe {
+    height: 350px;
+    max-width: 98vw;
+  }
+}
+
+footer {
+  padding: 2rem 1.5rem 2rem 1.5rem;
+  text-align: center;
+  color: #aaa;
+  margin: 2rem 0 1rem 0;
+  font-size: 1rem;
+}
