@@ -397,3 +397,38 @@ footer {
   margin: 2rem 0 1rem 0;
   font-size: 1rem;
 }
+
+/* Server stats styles */
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4em 0.2em;
+  border-bottom: 1px solid rgba(67,206,162,0.08);
+  font-size: 1.08em;
+  letter-spacing: 0.01em;
+}
+.stat-row:last-child {
+  border-bottom: none;
+}
+.stat-label {
+  color: #6dd5ed;
+  font-weight: 600;
+  text-shadow: 0 1px 4px rgba(33,147,176,0.08);
+  min-width: 90px;
+}
+.stat-value {
+  color: #fff;
+  font-weight: 500;
+  text-align: right;
+  flex: 1;
+}
+.stat-bar {
+  margin-bottom: 0.7em;
+}
+@media (max-width: 700px) {
+  .stat-row, .stat-label, .stat-value {
+    font-size: 0.98em;
+    min-width: 0;
+  }
+}
