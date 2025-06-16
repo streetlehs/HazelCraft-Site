@@ -96,10 +96,17 @@
     </aside>
     <aside class="stats-sidebar fade-in">
       <h3>Server Stats</h3>
-      <div id="server-stats">
-        <div id="server-down-message" style="border:2px solid #e53935; color:#f09593; border-radius:0.5em; padding:0.5em; margin-top:1em; background:#2a0000;">
-          Server is currently down or unreachable.
+      <div style="background:rgba(30,30,40,0.95);border-radius:1.2rem;box-shadow:0 4px 24px rgba(33,147,176,0.18);padding:1.2em 1em 1.2em 1em;margin-bottom:1.2em;">
+        <h4 style="color:#43cea2;margin:0 0 0.5em 0;">Performance</h4>
+        <div id="server-stats">
+          <div id="server-down-message" style="border:2px solid #e53935; color:#f09593; border-radius:0.5em; padding:0.5em; margin-top:1em; background:#2a0000;">
+            Server is currently down or unreachable.
+          </div>
         </div>
+      </div>
+      <div style="background:rgba(30,30,40,0.95);border-radius:1.2rem;box-shadow:0 4px 24px rgba(33,147,176,0.18);padding:1.2em 1em 1.2em 1em;">
+        <h4 style="color:#43cea2;margin:0 0 0.5em 0;">Players Online</h4>
+        <div id="player-list-sidebar">Loading...</div>
       </div>
     </aside>
     <script>
@@ -200,5 +207,37 @@
     <footer style="text-align:center; margin:2rem 0 1rem 0; color:#aaa;">
       &copy; 2025 HazelCraft. Not affiliated with Mojang, Microsoft or Hazelwick.
     </footer>
+    <script>
+    async function fetchPlayerList() {
+      try {
+        const res = await fetch('https://api.hazelcraft.tech/players');
+        const data = await res.json();
+        let html = `<strong>${data.online} / ${data.max} online</strong>`;
+        if (data.players && data.players.length > 0) {
+          html += '<ul style="margin-top:0.7em;">';
+          for (const name of data.players) {
+            html += `<li style="color:#43cea2;font-weight:600;">${name}</li>`;
+          }
+          html += '</ul>';
+        } else {
+          html += '<div style="color:#aaa;">No players online.</div>';
+        }
+        document.getElementById('player-list-sidebar').innerHTML = html;
+        window.playerListLoaded = true;
+      } catch {
+        document.getElementById('player-list-sidebar').innerHTML = '<div style="border:2px solid #e53935; color:#f09593; border-radius:0.5em; padding:0.5em; margin-top:1em; background:#2a0000;">Server is currently down or unreachable.</div>';
+        window.playerListLoaded = true;
+      }
+    }
+    setInterval(fetchPlayerList, 5000);
+    document.addEventListener('DOMContentLoaded', () => {
+      window.playerListLoaded = false;
+      document.getElementById('player-list-sidebar').innerHTML = 'Loading...';
+      fetchPlayerList();
+        if (!window.playerListLoaded && document.getElementById('player-list-sidebar').innerText === 'Loading...') {
+          document.getElementById('player-list-sidebar').innerHTML = '<div style="border:2px solid #e53935; color:#f09593; border-radius:0.5em; padding:0.5em; margin-top:1em; background:#2a0000;">Server is currently down or unreachable.</div>';
+        }
+    });
+    </script>
   </body>
 </html>
